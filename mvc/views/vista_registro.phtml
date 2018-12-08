@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+  <script type="text/javascript">
+  function validapass(){
+      pass= document.form.in_pass.pass.value;
+      reppass= document.form.in_reppass.rep_pass.value;
+
+      if(pass != reppass){
+          document.getElementById("advertpass").innerHTML="La contraseña no coincide";
+
+      }else{
+          document.getElementById("advertpass").innerHTML="La contraseña coincide";
+
+      }
+  }
+  </script>
+</head>
+
+<body>
+
+  <div class="jumbotron text-center" style="margin-bottom: 0px;">
+    <h1>Nombre de la web</h1>
+  </div>
+
+<div class="container" style="padding: 100px;" align="center">
+  <form class="col-md-5" name="form" action="#" method="post">
+    <div class="form-group" align="left">
+      <label for="nombre">Nombre de usuario:</label>
+      <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="form-group" align="left" name="in_pass">
+      <label for="pass">Contraseña:</label>
+      <input type="password" class="form-control" id="pass" name="pass">
+    </div>
+    <div class="form-group" align="left" name="in_reppass">
+      <label for="rep_pass">Repite la contraseña:</label>
+      <input type="password" class="form-control" name="rep_pass" onkeyup="validapass()">
+    </div>
+    <div id="advertpass"></div>
+    <div class="form-group" align="left">
+      <label for="pass">Mail:</label>
+      <input type="mail" class="form-control" id="mail" name="mail">
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+  </form>
+</div>
+
+
+</body>
+
+  <footer class="page-footer" style="background-color: lightgrey">
+
+      <div class="container" style="padding: 50px">
+        <div class="row" align="center">
+          <h3 class="col-md-6 font-weight-bold font-size-30">Sobre Nosotros</h3>
+          <h3 class="col-md-6 font-weight-bold">FAQS</h3>
+        </div>
+      </div>
+
+    </footer>
+</html>

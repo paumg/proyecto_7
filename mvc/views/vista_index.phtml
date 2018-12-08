@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+
+<body>
+
+  <div class="jumbotron text-center" style="margin-bottom: 0px;">
+    <h1>Wordnews</h1>
+  </div>
+
+  <div class="container-fluid" style="background-color: lightgrey; padding-top:10px; padding-bottom:10px">
+    <div class="row">
+      <a href="inicio_sesion.php" class="btn btn-outline-primary" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Iniciar Sesión</div></a>
+      <a href="registro.php" class="btn btn-outline-primary" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Registrarse</div></a>
+    </div>
+  </div>
+
+  <div class="container" style="width:100%; margin: 0 auto;">
+
+<!--bucle para sacar todas las noticias-->
+
+    <?php
+      for($i=1; $i<count($noticias); $i++){
+        echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 20px;'>";
+        echo $noticias[$i]["titulo"]."<br/>";
+        echo $noticias[$i]["subtitulo"]."<br/>";
+        echo $noticias[$i]["cuerpo"]."<br/>";
+        echo $noticias[$i]["fecha_creacion"]."<br/>";
+        echo "</div>";
+      }
+    ?>
+
+  </div>
+
+
+</body>
+
+<footer class="page-footer" style="background-color: lightgrey">
+
+    <div class="container" style="padding: 50px">
+      <div class="row" align="center">
+        <h3 class="col-md-6 font-weight-bold font-size-30">Sobre Nosotros</h3>
+        <h3 class="col-md-6 font-weight-bold">FAQS</h3>
+      </div>
+    </div>
+
+  </footer>
+
+
+</html>
