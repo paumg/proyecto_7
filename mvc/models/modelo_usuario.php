@@ -44,5 +44,31 @@ class usuario{
       }
       return $this->personas;
     }
+
+    public function get_all_usuarios(){
+      $consulta=$this->db->query("select * from usuarios inner join tipousuarios on usuarios.idtipou = tipousuarios.id_tipousuario");
+      while($filas=$consulta->fetch_assoc()){
+          $this->personas[]=$filas;
+      }
+      return $this->personas;
+    }
+
+    public function promocionar_usuario($id_tipousuario){
+      $consulta=$this->db->query("update tipousuarios set tipousuario = 'editor' where id_tipousuario='$id_tipousuario'");
+      if($consulta){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    public function degradar_usuario($id_tipousuario){
+      $consulta=$this->db->query("update tipousuarios set tipousuario='periodista' where id_tipousuario='$id_tipousuario'");
+      if($consulta){
+        return true;
+      }else{
+        return false;
+      }
+    }
 }
 ?>

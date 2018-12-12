@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+
+<body>
+
+  <div class="jumbotron text-center" style="margin-bottom: 0px;">
+    <h1>Nombre de la web</h1>
+  </div>
+
+  <div class="container-fluid" style="background-color: lightgrey; padding-top:10px; padding-bottom:10px">
+  <?php
+  foreach ($tipous as $dato){
+    $tipousuario=$dato['tipousuario'];
+  }
+
+  if ($tipousuario=='periodista'){
+    require_once("plantillas/nav_periodista.html");
+  }else if($tipousuario=='editor'){
+    require_once("plantillas/nav_editor.html");
+  }else if($tipousuario=='admin'){
+    require_once("plantillas/nav_admin.html");
+  }
+  ?>
+  </div>
+
+  <div class="container" align="center">
+
+        <!-- detectar el tipo de usuario y mostrar un boton o otro-->
+        <?php
+          for($i=1; $i<count($usuarios); $i++){
+            echo "<div class='row' style='background-color: lightgrey; width: 50%; padding: 20px; margin-top:50px; margin-bottom:50px;'>";
+            echo "<div class='col-md-12' style='margin-bottom:15px;'>";
+            echo $usuarios[$i]['nombre_usuario'];
+            echo "</div>";
+            echo "<div class='row'>";
+            if($usuarios[$i]['tipousuario']=='periodista'){
+              echo "<a href='gestion_usuario.php?id=" . $usuarios[$i]['id_tipousuario'] . "&tipo=" . $usuarios[$i]['tipousuario'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                <div class='col-md-5'>Promocionar</div>
+              </a>";
+            }else if($usuarios[$i]['tipousuario']=='editor'){
+              echo "<a href='gestion_usuario.php?id=" . $usuarios[$i]['id_tipousuario'] . "&tipo=" . $usuarios[$i]['tipousuario'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                <div class='col-md-5'>Degradar</div>
+              </a>";
+            }else if($usuarios[$i]['tipousuario']=='admin'){
+              echo "Este usuario es administrador";
+            }
+            echo "</div>";
+            echo "</div>";
+          }
+         ?>
+  </div>
+
+  <footer class="page-footer" style="background-color: lightgrey">
+
+      <div class="container" style="padding: 50px">
+        <div class="row" align="center">
+          <h3 class="col-md-6 font-weight-bold font-size-30">Sobre Nosotros</h3>
+          <h3 class="col-md-6 font-weight-bold">FAQS</h3>
+        </div>
+      </div>
+
+  </footer>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+
+<body>
+
+  <div class="jumbotron text-center" style="margin-bottom: 0px;">
+    <h1>Nombre de la web</h1>
+  </div>
+  <div class="container-fluid" style="background-color: lightgrey; padding-top:10px; padding-bottom:10px">
+<?php
+foreach ($tipous as $dato){
+    $tipousuario=$dato['tipousuario'];
+}
+
+if ($tipousuario=='periodista'){
+    require_once("plantillas/nav_periodista.html");
+}else if($tipousuario=='editor'){
+    require_once("plantillas/nav_editor.html");
+}else if($tipousuario=='admin'){
+    require_once("plantillas/nav_admin.html");
+}
+?>
+</div>
+
+
+  <div class="container" style="width:100%; margin: 0 auto;">
+
+  <!--bucle para sacar todas las noticias-->
+
+      <?php
+        for($i=1; $i<count($noticias); $i++){
+          echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 20px;'>";
+          echo "<div class='col-md-12'>";
+          echo $noticias[$i]["titulo"]."<br/>";
+          echo "</div>";
+          echo $noticias[$i]["subtitulo"]."<br/>";
+          echo $noticias[$i]["cuerpo"]."<br/>";
+          echo $noticias[$i]["fecha_creacion"]."<br/>";
+          echo "<div class='row' style='margin-top: 20px;'>";
+
+          if ($tipousuario=='editor'){
+              echo "<a href='modificar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                      <div class='col-md-5'>
+                        Modificar
+                      </div>
+                    </a>";
+          }else if($tipousuario=='admin'){
+              echo "<a href='modificar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                      <div class='col-md-5'>
+                        Modificar
+                      </div>
+                    </a>";
+              echo "<a href='eliminar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                      <div class='col-md-5'>
+                        Eliminar
+                      </div>
+                    </a>";
+          }
+
+          echo "</div>";
+          echo "</div>";
+        }
+      ?>
+
+    </div>
+
+</body>
+
+<footer class="page-footer" style="background-color: lightgrey">
+
+    <div class="container" style="padding: 50px">
+      <div class="row" align="center">
+        <h3 class="col-md-6 font-weight-bold font-size-30">Sobre Nosotros</h3>
+        <h3 class="col-md-6 font-weight-bold">FAQS</h3>
+      </div>
+    </div>
+
+  </footer>
