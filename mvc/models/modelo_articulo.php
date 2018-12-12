@@ -46,6 +46,14 @@
         return $this->noticias;
     }
 
+    public function get_articulos_no_publicados(){
+        $consulta=$this->db->query("select * from articulos where fecha_publicacion is null");
+        while($filas=$consulta->fetch_assoc()){
+            $this->noticias[]=$filas;
+        }
+        return $this->noticias;
+    }
+
     public function get_all_news_user($id_usuario){
         $consulta=$this->db->query("select * from articulos
         where autor=$id_usuario");
@@ -93,7 +101,7 @@
     }
 
     public function modificar_articulo($titulo, $subtitulo, $seccion, $fecha, $cuerpo, $imagen, $id){
-      $consulta=$this->db->query("update articulos set titulo='$titulo', subtitulo='$subtitulo', idsecc='$seccion', fecha_modificacion=$fecha, cuerpo='$cuerpo', imagen='$imagen' where idarticulo='$id'");
+      $consulta=$this->db->query("update articulos set titulo='$titulo', subtitulo='$subtitulo', idsecc='$seccion', fecha_modificacion='$fecha', cuerpo='$cuerpo', imagen='$imagen' where idarticulo='$id'");
       if($consulta){
         return true;
       }else{
@@ -109,5 +117,18 @@
         return false;
       }
     }
+
+    public function borrar_articulo($id){
+      $consulta=$this->db->query("delete from articulos where idarticulo='$id'");
+      if($consulta){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+  public function publicar_articulo($id, $fecha){
+    $consulta=$this->db->query("update articulos set fecha_publicacion='$fecha' where idarticulo='$id'");
+  }
   }
  ?>

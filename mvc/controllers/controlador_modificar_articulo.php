@@ -10,7 +10,7 @@ foreach($articulo as $idsecc){
 
 $seccion=$art->get_seccion($id);
 
-$keys=$art->get_keywords($id);
+$keys=$art->get_keywords($_GET['id']);
 
 require_once("views/vista_modificar_articulo.phtml");
  ?>

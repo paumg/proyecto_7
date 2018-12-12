@@ -8,7 +8,7 @@
 <body>
 
   <div class="jumbotron text-center" style="margin-bottom: 0px;">
-    <h1>Nombre de la web</h1>
+    <a href="usuario_registrado.php"><h1>Wordnews</h1></a>
   </div>
   <div class="container-fluid" style="background-color: lightgrey; padding-top:10px; padding-bottom:10px">
 <?php
@@ -32,7 +32,7 @@ if ($tipousuario=='periodista'){
   <!--bucle para sacar todas las noticias-->
 
       <?php
-        for($i=1; $i<count($noticias); $i++){
+        for($i=0; $i<count($noticias); $i++){
           echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 20px;'>";
           echo "<div class='col-md-12'>";
           echo $noticias[$i]["titulo"]."<br/>";
@@ -48,6 +48,11 @@ if ($tipousuario=='periodista'){
                         Modificar
                       </div>
                     </a>";
+              echo "<a href='publicar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                      <div class='col-md-5'>
+                        Publicar
+                      </div>
+                    </a>";
           }else if($tipousuario=='admin'){
               echo "<a href='modificar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
                       <div class='col-md-5'>
@@ -57,6 +62,12 @@ if ($tipousuario=='periodista'){
               echo "<a href='eliminar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
                       <div class='col-md-5'>
                         Eliminar
+                      </div>
+                    </a>";
+          }else if($tipousuario=='periodista'){
+              echo "<a href='modificar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
+                      <div class='col-md-5'>
+                        Modificar
                       </div>
                     </a>";
           }
