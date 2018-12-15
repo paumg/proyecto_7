@@ -46,6 +46,14 @@
         return $this->noticias;
     }
 
+    public function get_articulos_publicados(){
+        $consulta=$this->db->query("select * from articulos where fecha_publicacion is not null");
+        while($filas=$consulta->fetch_assoc()){
+            $this->noticias[]=$filas;
+        }
+        return $this->noticias;
+    }
+
     public function get_articulos_no_publicados(){
         $consulta=$this->db->query("select * from articulos where fecha_publicacion is null");
         while($filas=$consulta->fetch_assoc()){
@@ -55,8 +63,8 @@
     }
 
     public function get_all_news_user($id_usuario){
-        $consulta=$this->db->query("select * from articulos
-        where autor=$id_usuario");
+        $consulta=$this->db->query("select * from articulos where fecha_publicacion is null and
+        autor=$id_usuario");
 
         while($filas=$consulta->fetch_assoc()){
             $this->noticias[]=$filas;

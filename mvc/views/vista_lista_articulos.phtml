@@ -34,13 +34,16 @@ if ($tipousuario=='periodista'){
       <?php
         for($i=0; $i<count($noticias); $i++){
           echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 20px;'>";
-          echo "<div class='col-md-12'>";
+          echo "<h2 class='col-md-12'>";
           echo $noticias[$i]["titulo"]."<br/>";
-          echo "</div>";
-          echo $noticias[$i]["subtitulo"]."<br/>";
-          echo $noticias[$i]["cuerpo"]."<br/>";
-          echo $noticias[$i]["fecha_creacion"]."<br/>";
-          echo "<div class='row' style='margin-top: 20px;'>";
+          echo "</h2>";
+          echo "<div class='row' style='text-align:justify;margin: 10px auto 15px auto'><div class='col-md-12'>" . $noticias[$i]["cuerpo"] . "</div></div>";
+
+          echo @"<img src='img/" . $noticias[$i]["imagen"] . "' alt='' style='width:90%;height:100%;margin:0 auto;margin-bottom:20px;'>";
+
+          echo "<div class='row'><div class='col-md-12' style='width:100%'>" . $noticias[$i]["fecha_creacion"]."</div></div>";
+
+          echo "<div class='row' style='margin-top: 70px;'>";
 
           if ($tipousuario=='editor'){
               echo "<a href='modificar_articulo.php?id=" . $noticias[$i]['idarticulo'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>

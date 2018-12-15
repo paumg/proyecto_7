@@ -1,14 +1,15 @@
 <?php
 require("models/modelo_usuario.php");
 $per=new usuario();
-$tipous= $per->get_usuario('idusuario', 24);
+session_start();
+$tipous= $per->get_usuario('idusuario', $_SESSION['iduser']);
 
 
 
 
 require("models/modelo_articulo.php");
 $art=new articulo();
-$noticias=$art->get_all_news();
+$noticias=$art->get_articulos_publicados();
 
 require("views/vista_usuario_registrado.phtml");
  ?>

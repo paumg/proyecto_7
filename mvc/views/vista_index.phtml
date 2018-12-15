@@ -8,13 +8,13 @@
 <body>
 
   <div class="jumbotron text-center" style="margin-bottom: 0px;">
-    <h1>Wordnews</h1>
+    <h1 style='color:blue'>Wordnews</h1>
   </div>
 
   <div class="container-fluid" style="background-color: lightgrey; padding-top:10px; padding-bottom:10px">
     <div class="row">
-      <a href="inicio_sesion.php" class="btn btn-outline-primary" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Iniciar Sesión</div></a>
-      <a href="registro.php" class="btn btn-outline-primary" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Registrarse</div></a>
+      <a href="inicio_sesion.php" class="btn btn-outline-success" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Iniciar Sesión</div></a>
+      <a href="registro.php" class="btn btn-outline-info" style="margin-left:20px"><div class="col-sm-1 font-weight-bold">Registrarse</div></a>
     </div>
   </div>
 
@@ -23,12 +23,19 @@
 <!--bucle para sacar todas las noticias-->
 
     <?php
-      for($i=1; $i<count($noticias); $i++){
-        echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 20px;'>";
-        echo $noticias[$i]["titulo"]."<br/>";
-        echo $noticias[$i]["subtitulo"]."<br/>";
-        echo $noticias[$i]["cuerpo"]."<br/>";
-        echo $noticias[$i]["fecha_creacion"]."<br/>";
+      for($i=0; $i<count($noticias); $i++){
+        echo "<div class='row' style='width: 70%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; background-color:lightgrey; padding: 30px;'>";
+
+
+        echo "<h2 class='row'><div class='col-md-12'>" . $noticias[$i]["titulo"]."</div></h2>";
+
+        echo "<h5 class='row' style='width:100%'><div class='col-md-12'>" . $noticias[$i]["subtitulo"]."</div></h5>";
+
+        echo "<div class='row' style='text-align:justify;margin: 10px auto 15px auto'><div class='col-md-12'>" . $noticias[$i]["cuerpo"] . "</div></div>";
+
+        echo @"<img src='img/" . $noticias[$i]["imagen"] . "' alt='' style='width:90%;height:100%;margin:0 auto;margin-bottom:20px;'>";
+
+        echo "<div class='row'><div class='col-md-12' style='width:100%'>" . $noticias[$i]["fecha_creacion"]."</div></div>";
         echo "</div>";
       }
     ?>

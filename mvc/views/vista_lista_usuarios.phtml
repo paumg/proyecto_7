@@ -41,10 +41,12 @@
               echo "<a href='gestion_usuario.php?id=" . $usuarios[$i]['id_tipousuario'] . "&tipo=" . $usuarios[$i]['tipousuario'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
                 <div class='col-md-5'>Promocionar</div>
               </a>";
+              echo "<div class='col-md-12' style='margin-top:10px;text-align:left;'>Este usuario es " . $usuarios[$i]['tipousuario'] . "</div>";
             }else if($usuarios[$i]['tipousuario']=='editor'){
               echo "<a href='gestion_usuario.php?id=" . $usuarios[$i]['id_tipousuario'] . "&tipo=" . $usuarios[$i]['tipousuario'] . "' class='btn btn-outline-primary' style='margin-left: 10px;'>
                 <div class='col-md-5'>Degradar</div>
               </a>";
+              echo "<div class='col-md-12' style='margin-top:10px;text-align:left;'>Este usuario es " . $usuarios[$i]['tipousuario'] ."</div>";
             }else if($usuarios[$i]['tipousuario']=='admin'){
               echo "Este usuario es administrador";
             }

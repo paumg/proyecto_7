@@ -1,13 +1,14 @@
 <?php
 require_once("db/db.php");
 require_once("controllers/controlador_crear_articulo.php");
+session_start();
 
 if(isset($_POST['titulo']) && (isset($_POST['subtitulo'])) && isset($_POST['seccion']) && isset($_POST['cuerpo']) && isset($_POST['keywords'])){
-    $keys=explode(",", $_POST['keywords']);
+    $keys=explode(" ", $_POST['keywords']);
 
     //sesion aqui------------------------------------------------
     $per=new usuario();
-    $datouser= $per->get_usuario('idusuario', 26);
+    $datouser= $per->get_usuario('idusuario', $_SESSION['iduser']);
     foreach ($datouser as $dato) {
       $autor=$dato['idusuario'];
     }
@@ -27,5 +28,7 @@ if(isset($_POST['titulo']) && (isset($_POST['subtitulo'])) && isset($_POST['secc
     for($i = 0; $i<count($keys); $i++ ){
       $art->set_keywords($idarticulo,$keys[$i]);
     }
+
+    header("Location: usuario_registrado.php");
 }
 ?>
